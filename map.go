@@ -1,37 +1,32 @@
-/*
-映射(Map): 将唯一键映射到值 
-
-必须使用make函数来创建映射
-// declare a variable, by default map will be nil
-var map_variable map[key_data_type]value_data_type
-
-// define the map as nil map can not be assigned any value
-map_variable = make(map[key_data_type]value_data_type)
-*/
 package main
-
 import "fmt"
 
 func main() {
-	var countryCapitalMap map[string] string
+    var value int
+    var isPresent bool
 
-	countryCapitalMap = make(map[string] string)
+    map1 := make(map[string]int)
+    map1["New Delhi"] = 55
+    map1["Beijing"] = 20
+    map1["Washington"] = 25
+    value, isPresent = map1["Beijig"]
+    fmt.Println(value)
+    if isPresent {
+        fmt.Printf("The value of \"Beijing\" in map1 is: %d\n", value)
+    } else {
+        fmt.Printf("map1 does not contain Beijing")
+    }
 
-	countryCapitalMap["France"] = "Paris"
-	countryCapitalMap["Italy"] = "Rome"
-	countryCapitalMap["Japan"] = "Tokyo"
+    value, isPresent = map1["Paris"]
+    fmt.Printf("Is \"Paris\" in map1 ?: %t\n", isPresent)
+    fmt.Printf("Value is: %d\n", value)
 
-	for country := range countryCapitalMap {
-		fmt.Println("Capital of", country, "is", countryCapitalMap[country])
-	}
-
-	/* test if entry is present in the map or not*/
-	// country, capital := countryCapitalMap["France"]
-	// fmt.Println(country, capital)
-
-	delete(countryCapitalMap, "France")
-
-	for country, capital := range countryCapitalMap {
-		fmt.Println(country, capital)
-	}
+    // delete an item:
+    delete(map1, "Washington")
+    value, isPresent = map1["Washington"]
+    if isPresent {
+        fmt.Printf("The value of \"Washington\" in map1 is: %d\n", value)
+    } else {
+        fmt.Println("map1 does not contain Washington")
+    }
 }

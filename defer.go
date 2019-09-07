@@ -1,15 +1,17 @@
-// defer语句会延迟函数的执行直到上层函数返回
-package main
+package main 
 
 import "fmt"
 
 func main() {
-	fmt.Println("counting")
+	function1()
+}
 
-	// 延迟的函数调用被压入一个栈中.当函数返回时，会按照后进先出的顺序调用被延迟的函数调用
-	for i := 0; i < 10; i++ {
-		defer fmt.Println(i)
-	}
+func function1() {
+	fmt.Printf("In function1 at the top\n")
+    defer function2()
+    fmt.Printf("In function1 at the bottom!\n")
+}
 
-	fmt.Println("done")
+func function2() {
+	fmt.Printf("function2: Deferred until the end of the calling function!")
 }
