@@ -20,7 +20,7 @@ type Output struct {
 }
 
 func main() {
-  db, err := gorm.Open("mysql", "root:x1430371727@/test?charset=utf8&parseTime=True&loc=Local")
+  db, err := gorm.Open("mysql", "root:xxxxxxxxxxx@/test?charset=utf8&parseTime=True&loc=Local")
   if err != nil {
     panic("连接数据库失败")
   }
