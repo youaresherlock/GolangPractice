@@ -1,3 +1,31 @@
+/*
+* @Author: Clarence
+* @Date:   2019-09-12 10:24:39
+* @Last Modified by:   Clarence
+* @Last Modified time: 2019-10-06 21:11:22
+*/
+package main 
+
+import "fmt"
+
+func main() {
+	var array1 [3]*string 
+	array2 := [3]*string{new(string),new(string),new(string)}
+	*array2[0] = "Red"
+	*array2[2] = "Blue"
+	*array2[1] = "Pink"
+	// 赋值操作之后, 两个数组指向同一组字符串 
+	array1 = array2
+	for _, each := range array2 {
+		fmt.Printf("%s: , %x: \n", *each, each)
+	}
+	*array2[0] = "fixRed"
+	for _, each := range array1 {
+		fmt.Printf("%s: , %x: \n", *each, each)
+	}
+}
+
+
 Skip to content
 
 Please note that GitHub no longer supports your web browser.
@@ -134,23 +162,4 @@ struct bar *a2in(a)		/* 0x2f4a, needs to be fixed */
     return &local;
 }
 
-/* End of source file in original. */
 
-/*
- * Local variables:
- * compile-command: "cc -S net.c"
- * comment-column: 48
- * End:
- */
-© 2019 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
