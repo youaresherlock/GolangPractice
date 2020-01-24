@@ -1,0 +1,3 @@
+apple 10 counts 
+banana 6 counts 
+pear 20 counts 
